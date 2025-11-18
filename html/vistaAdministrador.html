@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración de EcoMarket para gestionar usuarios, productos y categorías.">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>EcoMarket - Panel Administrador</title>
+    <link rel="stylesheet" href="../css/vista_admin.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/usuario.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/gestionarUsuario.js"></script>
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/producto.js"></script>
+    <script src="../js/gestionarCategoria.js"></script>
+    <script src="../js/categoria.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">🌿 EcoMarket</div>
+
+    <nav class="navbar">
+        <a class="activo" href="./vistaAdministrador.html">Inicio</a>
+        <a href="./gestionUsuarios.html">Gestionar Usuarios</a>
+        <a href="../index.html">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<div class="sidebar-decorativa"></div>
+
+<section class="contenedor-admin">
+
+    <div class="panel-izq">
+        
+        <div class="carrusel">
+            <div class="slide" style="background-image: url('../recursos/img/imagen 1.jpeg');"></div>
+            <div class="slide" style="background-image: url('../recursos/img/imagen 3.jpeg');"></div>
+            <div class="slide" style="background-image: url('../recursos/img/imagen 5.jpeg');"></div>
+        </div>
+
+        <h3 class="mensaje-secundario">
+            “Administrar también es cuidar el planeta 🌎”
+        </h3>
+    </div>
+
+    <div class="panel-der">
+        <h2 class="bienvenida">👋 Bienvenido Administrador(a)</h2>
+
+        <p class="texto">
+            Aquí podrás gestionar usuarios, productos, reportes y el inventario general.
+            Mantén el sistema actualizado y contribuye a un comercio más ecológico.
+        </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/848/848043.png">
+                <h4 id="usuariosRegistrados"></h4>
+                <p>Registrados en la plataforma</p>
+            </div>
+
+            <div class="stat-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+                <h4 id="productosRegistrados"></h4>
+                <p>Activos ecológicos</p>
+            </div>
+
+            <div class="stat-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
+                <h4 id="categoriasRegistradas"></h4>
+                <p>Últimos 7 días</p>
+            </div>
+        </div>
+
+        <h3 class="titulo-modulos">Accesos Rápidos</h3>
+
+        <div class="accesos-rapidos">
+            <a href="./gestionUsuarios.html" class="acceso-btn">➤ Gestionar Usuarios</a>
+            
+      
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+    EcoMarket © 2025 — Plataforma ecológica y sostenible 🌱
+</footer>
+<script>
+    mostrardatosdashboard()
+</script>
+</body>
+</html>

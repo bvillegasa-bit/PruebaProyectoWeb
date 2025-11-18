@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión del carrito de compras en EcoMarket">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>Carrito de Compras - EcoMarket</title>
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarCompra.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/producto.js"></script>
+    <script src="../js/compra.js"></script>
+    <script src="../js/filtrarProductos.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">🌿 EcoMarket</div>
+    <nav class="navbar">
+        <a href="./vistaUsuario.html" class="active">Inicio</a>
+        <a href="./gestionCarrito.html">Comprar</a>
+        <a href="./buscarProductos.html">Buscar Productos</a>
+        <a href="./canjearProductos.html">Canjear Productos</a>
+        <a href="../index.html">Cerrar Sesión</a>
+    </div>
+    </nav>
+</div>
+
+<div class="contenedor">
+
+    <div class="encabezado-carrito">
+        <div>
+            <h2>Bienvenido(a) al Carrito de Compras</h2>
+            <p>Gestiona tus productos antes de confirmar tu compra.</p>
+        </div>
+        <div class="img-encabezado"></div>
+    </div>
+
+    <div class="selector-producto">
+        <label for="productosCarrito">Producto:</label>
+        <select id="productosCarrito">
+        </select>
+    </div>
+
+    <div id="contenedorPrincipal" class="productos">
+
+    </div>
+
+    </div>
+
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="totales">
+        <div>
+            <label>Subtotal:</label>
+            <input id="subtotal" type="text" readonly>
+        </div>
+        <div>
+            <label>Total:</label>
+            <input id="total" type="text" readonly>
+        </div>
+    </div>
+
+    <div class="botones-final">
+        <button id="confirmarCompra" class="btn-confirmar">Confirmar compra</button>
+        <button id="cancelarCompra" class="btn-cancelar">Cancelar compra</button>
+    </div>
+
+</div>
+
+    <script>
+        filtrarProductosCarrito()
+        cargarProductosEnSelect()
+        mostrarCarrito();
+        calcularTotales();
+        
+        document.getElementById('confirmarCompra').addEventListener('click', confirmarCompra);
+        document.getElementById('cancelarCompra').addEventListener('click', cancelarCompra);
+    </script>
+</body>
+</html>

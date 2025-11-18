@@ -1,0 +1,94 @@
+.container-canje {
+    margin: 30px;
+    background: var(--blanco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--sombra);
+}
+
+.banner-canje {
+    background: var(--vs);
+    display: flex;
+    padding: 25px;
+    border-radius: 12px;
+    align-items: center;
+    gap: 25px;
+}
+
+.banner-img {
+    width: 280px;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+}
+
+.banner-info h1 {
+    color: var(--v3);
+}
+
+.titulo-central {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--v2);
+}
+
+.form-canje {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.columna-1,
+.columna-2 {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.columna-1 label,
+.columna-2 label {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 2px solid var(--v1);
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.btn-consultar,
+.btn-canjear,
+.btn-limpiar {
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--v2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-canjear:hover,
+.btn-consultar:hover,
+.btn-limpiar:hover {
+    background: var(--v3);
+}
+
+.producto-img {
+    width: 220px;
+    height: 220px;
+    background: #eee;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 2px dashed var(--v3);
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}

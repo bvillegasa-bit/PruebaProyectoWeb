@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de registro para nuevos usuarios en EcoMarket">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>EcoMarket - Registro</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarUsuario.js"></script>
+    <script src="../js/usuario.js"></script>
+    <script src="../js/utilidades.js"></script>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>Crear Cuenta</h2>
+
+        <form id="frmRegistro">
+
+            <div class="grupo">
+                <label for="nombreCompleto">Nombre Completo: </label>
+                <input type="text" id="nombreCompleto" required>
+            </div>
+
+            <div class="grupo">
+                <label for="correo">Email: </label>
+                <input type="email" id="correo" required>
+            </div>
+            <div class="grupo">
+                <label for="telefono">Teléfono: </label>
+                <input type="text" id="telefono" required>
+            </div>
+
+            <div class="grupo">
+                <label for="contraseña">Contraseña: </label>
+                <input type="password" id="contraseña" required>
+            </div>
+
+            <div class="grupo">
+                <label for="confirmarContraseña">Confirmar Contraseña: </label>
+                <input type="password" id="confirmarContraseña" required>
+            </div>
+
+            <button type="submit">Registrar</button>
+
+            <p class="texto">
+                ¿Ya tienes cuenta?
+                <a href="./login.html">Iniciar sesión</a>
+            </p>
+
+        </form>
+    </div>
+
+    <script>
+        frmRegistro.addEventListener('submit', function(event) {
+            event.preventDefault()  
+            const id = validarUltimoIDygenerar()  
+            const nombreCompleto = document.getElementById('nombreCompleto').value  
+            const correo = document.getElementById('correo').value  
+            const telefono = document.getElementById('telefono').value  
+            const contraseña = document.getElementById('contraseña').value  
+            const confirmarContraseña = document.getElementById('confirmarContraseña').value  
+            const rol = 'usuario final'  
+            const FechaActual = new Date().toISOString().split('T')[0]  
+            if (contraseña !== confirmarContraseña) {
+                alert('Las contraseñas no coinciden.')  
+                return  
+            }
+
+            const nuevoUsuario = new usuario(id, contraseña, nombreCompleto, correo, telefono, rol, FechaActual)  
+            var exito= registrarUsuario(nuevoUsuario)
+            if (exito) {
+                alert('Registro exitoso. Ahora puedes iniciar sesión.')  
+                window.location.href = './login.html'  
+            } else {
+                alert('El correo ya está registrado.')  
+            }
+        })  
+
+        function registrarUsuario(usuario) {
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []  
+
+            const usuarioExistente = usuarios.find(u => u.correo === usuario.correo)  
+            if (usuarioExistente) {
+                return false  
+            }
+
+            usuarios.push(usuario)  
+            localStorage.setItem('usuarios', JSON.stringify(usuarios))  
+            return true  
+        }
+
+        function validarUltimoIDygenerar() {
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []  
+
+            if (usuarios.length === 0) {
+                return '0001'  
+            } else {
+                let ultimoUsuario = usuarios[usuarios.length - 1]  
+                let ultimoID = parseInt(ultimoUsuario.IdUsuario)  
+                let nuevoID = (ultimoID + 1).toString().padStart(4, '0')  
+                return nuevoID  
+            }
+        }
+    </script>
+</body>
+</html>

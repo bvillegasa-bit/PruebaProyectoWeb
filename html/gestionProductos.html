@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de productos en EcoMarket">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>EcoMarket - Gestión de Productos</title>
+    <link rel="stylesheet" href="../css/gestion_producto.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/producto.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/categoria.js"></script>
+    <script src="../js/gestionarCategoria.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <nav class="navbar">
+        <div class="logo">🌿 EcoMarket</div>
+
+        <ul class="nav-links">
+            <li><a href="./vistaVendedor.html">Inicio</a></li>
+            <li><a href="./gestionCategorias.html">Gestionar Categorias</a></li>
+            <li><a href="./gestionProductos.html">Gestionar Productos</a></li>
+            <li><a href="./gestionGanancias.html">Gestionar Ganancias</a></li>
+            <li><a href="../index.html">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contenedor">
+
+    <h2 class="titulo">Gestión de productos</h2>
+    <p class="subtexto">En esta sección, usted podrá gestionar sus productos.</p>
+
+    <div class="imagen-demo">
+        <img src="../recursos/img/imagen 1.jpeg" alt="Imagen del producto">
+    </div>
+
+    <form class="formulario">
+
+        <div class="fila">
+            <div class="campo">
+                <label for="idProducto" >Identificación del producto:</label>
+                <input type="text" id="idProducto">
+            </div>
+
+            <div class="campo">
+                <label for="precioProducto">Precio:</label>
+                <input type="number" id="precioProducto" step="0.01">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="nombreProducto">Nombre del producto:</label>
+                <input type="text" id="nombreProducto">
+            </div>
+
+            <div class="campo">
+                <label for="etiquetaProducto">Etiqueta ecológica:</label>
+                <select id="etiquetaProducto">
+                    <option value = "">Selecciona</option>
+                    <option value = "Biodegradable">Biodegradable</option>
+                    <option value="Reciclado">Reciclado</option>
+                    <option value="Reutilizable">Reutilizable</option>
+                    <option value="Orgánico">Orgánico</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo descripcion">
+                <label for="descripcionProducto">Descripción del producto:</label>
+                <textarea id="descripcionProducto"></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="estadoProducto">Estado:</label>
+                <select id="estadoProducto">
+                    <option value="">Selecciona</option>
+                    <option value="Disponible">Disponible</option>
+                    <option value="Agotado">Agotado</option>
+                    <option value="Descontinuado">Descontinuado</option>
+                </select>
+
+                <label for="imagenProducto" style="margin-top:15px;">Imagen (URL):</label>
+                <input type="text" id="imagenProducto" placeholder="Ingrese la URL">
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="campo">
+                <label for="categoriaProducto">Categoría:</label>
+                <select id="categoriaProducto">
+                    
+                </select>
+            </div>
+            <div class="campo">
+                <label for="costoProducto" style="margin-top:15px;">Costo:</label>
+                <input type="number" id="costoProducto" step="0.01">
+            </div>
+        </div>
+
+    </form>
+
+    <div class="acciones-superiores">
+        <button id="btnGuardarProducto" onclick="crearProducto()" class="btn guardar">Guardar</button>
+        <button id="btnConsultarProducto" onclick="consultarProducto()" class="btn consultar">Consultar</button>
+        <button id="btnModificarProducto" onclick="modificarProducto()" class="btn consultar">Modificar</button>
+    </div>
+
+    <table class="tabla-productos" id="tblProductos">
+        <thead>
+            <tr>
+                <th>Identificación</th>
+                <th>Nombre del Producto</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Costo</th>
+                <th>Precio</th>
+                <th>Etiqueta</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody> 
+                       
+        </tbody>
+    </table>
+    </section>
+    <script>
+        cargarCategoriasEnSelect()
+        mostrarProductosEnTabla()
+        botonesInicioProducto()
+    </script>
+
+</body>
+</html>

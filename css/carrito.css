@@ -1,0 +1,188 @@
+
+:root {
+    --verde-primario: #2ECC71;
+    --verde-secundario: #27AE60;
+    --verde-oscuro: #145A32;
+    --verde-suave: #E9F8EE;
+    --arena: #F4F1DE;
+    --blanco: #ffffff;
+    --sombra: rgba(0,0,0,0.15);
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(#dfffe3, var(--arena));
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background: var(--verde-oscuro);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.contenedor {
+    width: 85%;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--blanco);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px var(--sombra);
+}
+
+.encabezado-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--verde-suave);
+    border-left: 8px solid var(--verde-primario);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.img-encabezado {
+    width: 120px;
+    height: 120px;
+    background: url('https://cdn-icons-png.flaticon.com/512/1040/1040230.png');
+    background-size: cover;
+}
+
+.selector-producto {
+    margin: 25px 0;
+    font-size: 18px;
+}
+
+.selector-producto select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--verde-secundario);
+}
+
+.productos {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.card-producto {
+    width: 48%;
+    background: var(--verde-suave);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    gap: 15px;
+    border: 2px solid var(--verde-primario);
+}
+
+.img-producto {
+    width: 140px;
+    height: 140px;
+    background: #cce8d0;
+}
+
+.info-producto label {
+    font-weight: 600;
+    color: var(--verde-oscuro);
+}
+
+.info-producto input {
+    width: 80px;
+    padding: 7px;
+    border-radius: 10px;
+    border: 2px solid var(--verde-secundario);
+    background: white;
+}
+
+.btn-agregar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: var(--verde-primario);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th {
+    background: var(--verde-oscuro);
+    color: white;
+    padding: 12px;
+}
+
+.tabla td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.editar, .eliminar {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.editar {
+    background: #A3D9A5;
+}
+
+.eliminar {
+    background: #FF6B6B;
+    color: white;
+}
+
+.totales {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.totales input {
+    padding: 10px;
+    width: 120px;
+    border-radius: 10px;
+    background: var(--verde-suave);
+    border: 2px solid var(--verde-secundario);
+}
+
+.botones-final {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.btn-confirmar {
+    background: var(--verde-primario);
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background: #FF6B6B;
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de gestión de ganancias para vendedores en EcoMarket. Consulta y analiza tus ventas por mes o por producto.">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>Consulta de ganancias</title>
+    <link rel="stylesheet" href="../css/consulta.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/ganancias.js"></script>
+    <script src="../js/gestionarGanancias.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/gestionarCompra.js"></script>
+    <script src="../js/compra.js"></script>
+    <script src="../js/producto.js"></script>
+</head>
+<body>
+
+<div class="eco-window">
+
+    <div class="menu-bar">
+        <h2>EcoPanel</h2>
+        <nav>
+            <a href="./vistaVendedor.html">Inicio</a>
+            <a href="./gestionCategorias.html">Gestionar Categorias</a>
+            <a href="./gestionProductos.html">Gestionar Productos</a>
+            <a href="./gestionGanancias.html">Gestionar Ganancias</a>
+            <a href="../index.html">Cerrar Sesión</a>
+        </nav>
+    </div>
+
+    <div class="intro">
+        <div class="icon">🌱</div>
+        <h1>Consulta de Ganancias</h1>
+        <p>Analiza tus ventas por mes o por producto.</p>
+    </div>
+
+    <div class="box">
+        <h3>Filtros de búsqueda</h3>
+
+        <div class="radios">
+            <label><input type="radio" name="tipo" checked> Por mes</label>
+            <label><input type="radio" name="tipo"> Por producto</label>
+        </div>
+
+        <div class="inputs">
+            <div id="divAño">
+                <label>Año</label>
+                <select>
+                    <option>Seleccione</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                </select>
+            </div>
+
+            <div id="divProducto">
+                <label>Producto</label>
+                <select id="productoGanancias">
+
+
+                </select>
+            </div>
+        </div>
+
+        <button class="btn" onclick="consultarGanancias()">Consultar</button>
+    </div>
+
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const radios = document.querySelectorAll('input[name="tipo"]')
+            const divAño = document.getElementById('divAño')
+            const divProducto = document.getElementById('divProducto')
+
+            function toggleInputs() {
+                if (document.querySelector('input[name="tipo"]:checked').nextSibling.textContent.trim() === 'Por mes') {
+                    divAño.style.display = 'block'
+                    divProducto.style.display = 'none'
+                } else {
+                    divAño.style.display = 'block'
+                    divProducto.style.display = 'block'
+                }
+            }
+
+            radios.forEach(radio => {
+                radio.addEventListener('change', toggleInputs)
+            })
+
+            toggleInputs()
+            cargarProductosEnSelectGanancias()
+        })
+    </script>
+</body>
+</html>

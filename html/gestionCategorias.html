@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de categorías de productos en EcoMarket">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>Gestión de Categorías</title>
+    <link rel="stylesheet" href="../css/gestion_categoria.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarCategoria.js"></script>
+    <script src="../js/categoria.js"></script>
+    <script src="../js/utilidades.js"></script>
+</head>
+<body>
+ <nav class="navbar">
+        <div class="logo">🌿 EcoMarket</div>
+
+        <ul class="nav-links">
+            <li><a href="./vistaVendedor.html">Inicio</a></li>
+            <li><a href="./gestionCategorias.html">Gestionar Categorias</a></li>
+            <li><a href="./gestionProductos.html">Gestionar Productos</a></li>
+            <li><a href="./gestionGanancias.html">Gestionar Ganancias</a></li>
+            <li><a href="../index.html">Cerrar Sesión</a></li>
+        </ul>
+
+        <div class="profile-icon">👤</div>
+    </nav>
+    <header>
+        <h1>Gestión de Categorías</h1>
+        <p>Administre, consulte, modifique o elimine categorías fácilmente.</p>
+    </header>
+
+    <div class="content-box">
+
+        <section class="panel">
+            <h2>Listado de Categorías</h2>
+            <div class="list-area">
+                <table id="tblCategorias">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de la Categoría</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    
+
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Registrar Nueva Categoría</h2>
+            <div class="input-group">
+                <label for="idCategoria">Identificación de la categoría:</label>
+                <input id="idCategoria" type="text">
+            </div>
+            <div class="input-group">
+                <label for="nombreCategoria">Nombre de la categoría:</label>
+                <input id="nombreCategoria" type="text" placeholder="Ej: Verduras frescas">
+            </div>
+
+            <div class="btn-group">
+                <button id="btnGuardarCategoria" onclick="crearCategoria()" class="btn save">Guardar</button>
+                <button id="btnConsultarCategoria" onclick="consultarCategoria()" class="btn consult">Consultar</button>
+                <button id="btnModificarCategoria" onclick="modificarCategoria()" class="btn consult">Modificar</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+           mostrarCategoriasEnTabla()
+           botonesInicio()
+    </script>
+
+</body>
+</html>

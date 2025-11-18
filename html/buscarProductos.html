@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Busca y filtra productos ecológicos en EcoMarket">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>Búsqueda y Filtros</title>
+    <link rel="stylesheet" href="../css/busqueda.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/producto.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/categoria.js"></script>
+    <script src="../js/gestionarCategoria.js"></script>
+    <script src="../js/filtrarProductos.js"></script>
+</head>
+<body>
+
+<div class="eco-window">
+
+    <div class="header">
+        <div class="logo">🌿 EcoMarket</div>
+        <nav class="navbar">
+        <a href="./vistaUsuario.html" class="active">Inicio</a>
+        <a href="./gestionCarrito.html">Comprar</a>
+        <a href="./buscarProductos.html">Buscar Productos</a>
+        <a href="./canjearProductos.html">Canjear Productos</a>
+        <a href="../index.html">Cerrar Sesión</a>
+        </nav>
+    </div>
+        
+    </div>
+
+    <section class="search-section">
+
+        <h1>Búsqueda y Filtros</h1>
+
+        <div class="search-row">
+            <input type="text" id="filtroBusqueda" placeholder="Buscar Productos...">
+            <button onclick="filtrarProductos()" class="search-btn">🔍</button>
+        </div>
+
+        <div class="filters-row">
+
+            <div class="filter-box">
+                <label>Categoría</label>
+                <select id="categoriaProducto">
+                </select>
+            </div>
+
+            <div class="filter-box">
+                <label>Etiqueta ecológica</label>
+                <select id="etiquetaProductos">
+                    <option value="">Todas</option>
+                    <option value="Biodegradable">Biodegradable</option>
+                    <option value="Reciclado">Reciclado</option>
+                    <option value="Orgánico">Orgánico</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div id="contenedorPrincipal" class="grid-products">
+            
+        </div>
+
+    </section>
+</div>
+
+    
+ <script>
+    cargarCategoriasEnSelect()  
+    mostrarProductosEnDiv()  
+    const inputBusqueda = document.getElementById('filtroBusqueda')  
+    const selectCategoria = document.getElementById('categoriaProducto')  
+    const selectEtiqueta = document.getElementById('etiquetaProductos')  
+
+    inputBusqueda.addEventListener('input', filtrarProductos)  
+    selectCategoria.addEventListener('change', filtrarProductos)  
+    selectEtiqueta.addEventListener('change', filtrarProductos)  
+
+
+    mostrarProductosFiltrados(cargarProductos())  
+ </script>
+
+</body>
+</html>

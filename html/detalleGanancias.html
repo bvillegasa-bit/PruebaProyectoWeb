@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalle de ganancias y estadísticas de ventas.">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>Detalle de ganancias</title>
+    <link rel="stylesheet" href="../css/consulta.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/ganancias.js"></script>
+    <script src="../js/gestionarGanancias.js"></script>
+    <script src="../js/utilidades.js"></script>
+    <script src="../js/gestionarProducto.js"></script>
+    <script src="../js/compra.js"></script>
+    <script src="../js/producto.js"></script>
+</head>
+<body>
+
+<div class="eco-window">
+
+    <div class="menu-bar">
+        <h2>EcoPanel</h2>
+        <nav>
+            <a href="./gestionGanancias.html">Volver</a>
+        </nav>
+    </div>
+
+    <div class="intro">
+        <div class="icon">📊</div>
+        <h1>Resultados de la consulta</h1>
+        <p>Tus estadísticas de ventas y ganancias.</p>
+    </div>
+
+    <div class="table-box">
+        <table id="tablaGanancias">
+
+        </table>
+    </div>
+
+    <div class="grafico" id="graficoGanancias">
+       
+    </div>
+
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.pathname.includes('detalleGanancias.html')) {
+                cargarResultados()  
+            } else {
+                
+                document.querySelector('.btn').addEventListener('click', consultarGanancias)  
+            }
+        })  
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página principal de EcoMarket para usuarios finales, con acceso a productos ecológicos.">
+    <meta name="author" content="Victoria Barrios, Natalia Mercado, Bernabé Villegas">
+    <title>EcoMarket - Inicio</title>
+    <link rel="stylesheet" href="../css/usuario.css">
+    <link rel="icon" type="image/png" href="../recursos/img/Logo.png">
+    <script src="../js/gestionarProducto.js" ></script>
+    <script src="../js/producto.js" ></script>
+    <script src="../js/gestionarCompra.js" ></script>
+    <script src="../js/compra.js" ></script>
+    <script src="../js/utilidades.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🌿 EcoMarket</div>
+
+        <ul class="nav-links">
+            <li><a href="./vistaUsuario.html" class="active">Inicio</a></li>
+            <li><a href="./gestionCarrito.html">Comprar</a></li>
+            <li><a href="./buscarProductos.html">Buscar Productos</a></li>
+            <li><a href="./canjearProductos.html">Canjear Productos</a></li>
+            <li><a href="../index.html">Cerrar Sesión</a></li>
+     
+        </ul>
+
+        <div class="profile-icon">👤</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Productos ecológicos para un futuro sostenible 🌎</h1>
+        <p>Compra responsable apoyando productores locales.</p>
+    </header>
+
+    <section id="contenedorProductos" class="productos">
+
+    </section>
+
+
+    <footer class="footer">
+        © 2025 EcoMarket — Cuidemos el planeta juntos 🌱
+    </footer>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            cargarProductosUsuario()  
+        })  
+        function cargarProductosUsuario() {
+            const productos = cargarProductos()  
+            const contenedorProductos = document.getElementById('contenedorProductos')  
+
+            productos.forEach(producto => {
+                const tarjetaProducto = document.createElement('div')  
+                tarjetaProducto.classList.add('producto')
+                const imagen = crearImagen(producto.imagenProducto, producto.nombreProducto, 200, 200)
+                const nombre = crearTagConTexto('h3', producto.nombreProducto)  
+                const descripcion = crearTagConTexto('p', producto.descripcionProducto)
+                const precio = crearTagConTexto('p', `Precio: $${producto.precioProducto}`)
+                adicionarTagAContenedor(imagen, tarjetaProducto)
+                adicionarTagAContenedor(nombre, tarjetaProducto)
+                adicionarTagAContenedor(descripcion, tarjetaProducto)
+                adicionarTagAContenedor(precio, tarjetaProducto)
+                adicionarTagAContenedor(tarjetaProducto, contenedorProductos)
+            })  
+        }
+    </script>
+</body>
+</html>
