@@ -295,6 +295,15 @@ function mostrarProductosEnDiv(productos = null){
     var infoProducto = crearElemento('div')
     infoProducto.classList.add('info-producto')
     var tituloProducto = crearTagConTexto('h3', producto.nombreProducto)
+    if (producto.urlProducto) {
+        var enlace = crearElemento('a')
+        enlace.href = producto.urlProducto
+        enlace.target = '_blank'
+        enlace.appendChild(tituloProducto)
+        infoProducto.appendChild(enlace)
+    } else {
+        infoProducto.appendChild(tituloProducto)
+    }
     var descripcionProducto = crearTagConTexto('p', producto.descripcionProducto)
     var etiquetaProducto = crearTagConTexto('p', `Etiqueta: ${producto.etiquetaProducto}`)
     var precioProducto = crearTagConTexto('p', `Precio: $${producto.precioProducto}`)
@@ -308,7 +317,7 @@ function mostrarProductosEnDiv(productos = null){
     cantidadInput.classList.add('cantidad')
     var btnAgregar = crearTagConTexto('button', 'Agregar')
     btnAgregar.classList.add('btn-agregar')
-    infoProducto.appendChild(tituloProducto)
+    // title already appended (possibly as link)
     infoProducto.appendChild(descripcionProducto)
     infoProducto.appendChild(etiquetaProducto)
     infoProducto.appendChild(precioProducto)
