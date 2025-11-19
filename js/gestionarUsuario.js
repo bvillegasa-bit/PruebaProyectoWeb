@@ -33,6 +33,8 @@ function crearUsuario(){
     usuarios.push(nuevoUsuario) 
     guardarUsuarios(usuarios) 
     mostrarUsuariosEnTabla()
+    alert("Usuario agregado correctamente.")
+    limpiarFormularioUsuario()
     return nuevoUsuario 
 }
 }
@@ -67,14 +69,12 @@ function modificarUsuario(){
         mostrarUsuariosEnTabla()
         entradaIdUsuario.disabled = false
         var btnGuardar = document.getElementById('btnGuardar')
-        var btnModificar = document.getElementById('btnModificar')
-        var btnConsultar = document.getElementById('btnConsultar')
+        var btnModificar = document.getElementById('btnModificar')        
         btnGuardar.style.display = 'inline-block'
         btnModificar.style.display = 'none'
-        btnConsultar.style.display = 'inline-block'
+        alert("Usuario actualizado exitosamente")
         limpiarFormularioUsuario()
         return true
-        
     }else{
         return false
     }
@@ -115,10 +115,8 @@ function editarUsuario(){
     entradaIdUsuario.disabled = true
     var btnGuardar = document.getElementById('btnGuardar')
     var btnModificar = document.getElementById('btnModificar')
-    var btnConsultar = document.getElementById('btnConsultar')
     btnGuardar.style.display = 'none'
     btnModificar.style.display = 'inline-block'
-    btnConsultar.style.display = 'none'
 }
 function eliminarUsuario(){
     var usuarios = cargarUsuarios()
@@ -134,6 +132,7 @@ function eliminarUsuario(){
         guardarUsuarios(usuarios)
         mostrarUsuariosEnTabla()
         limpiarFormularioUsuario()
+        alert("Usuario eliminado correctamente")
         return true
     }else{
         return false
@@ -168,18 +167,6 @@ function loginUsuario(){
     } else {
         alert("Credenciales incorrectas. Inténtalo de nuevo.")
     }
-}
-
-function consultarUsuario(){
-    var entradaIdUsuario = document.getElementById('IdUsuario').value
-    var usuarioEncontrado = buscarUsuario(entradaIdUsuario)
-    if (usuarioEncontrado) {
-        alert(`Usuario encontrado:\nNombre: ${usuarioEncontrado.nombreCompleto}\nCorreo: ${usuarioEncontrado.correo}\nRol: ${usuarioEncontrado.rol}`)
-        limpiarFormularioUsuario()  
-    } else {
-        alert("Usuario no encontrado.")
-        limpiarFormularioUsuario()      
-}
 }
 
 function mostrarUsuariosEnTabla(){
@@ -273,10 +260,10 @@ function validarLogin(){
 function botonesInicio(){
     var btnGuardar = document.getElementById('btnGuardar')
     var btnModificar = document.getElementById('btnModificar')
-    var btnConsultar = document.getElementById('btnConsultar')
+    var campoId = document.getElementById('IdUsuario')
     btnGuardar.style.display = 'inline-block'
     btnModificar.style.display = 'none'
-    btnConsultar.style.display = 'inline-block'
+    campoId.disabled = true
 }
 function limpiarFormularioUsuario(){
     document.getElementById('IdUsuario').value = ''
@@ -287,6 +274,5 @@ function limpiarFormularioUsuario(){
     document.getElementById('telefono2').value = ''
     document.getElementById('telefono3').value = ''
     document.getElementById('rol').value = ''
-    document.getElementById('IdUsuario').disabled = false
     botonesInicio()
 }

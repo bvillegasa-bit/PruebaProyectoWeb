@@ -24,8 +24,9 @@ function crearCategoria(){
     categorias.push(nuevaCategoria) 
     guardarCategorias(categorias) 
     mostrarCategoriasEnTabla()
-    return nuevaCategoria 
     limpiarFormularioCategoria()
+    alert("Categoría creada correctamente")
+    return nuevaCategoria 
     }
 }
 
@@ -43,14 +44,12 @@ function modificarCategoria(){
         categorias[categoriaIndex].nombre = entradaNombreCategoria
         guardarCategorias(categorias)
         mostrarCategoriasEnTabla()
-        entradaIdCategoria.disabled = false
         var btnGuardar = document.getElementById('btnGuardarCategoria')
         var btnModificar = document.getElementById('btnModificarCategoria')
-        var btnConsultar = document.getElementById('btnConsultarCategoria')
         btnGuardar.style.display = 'inline-block'
         btnModificar.style.display = 'none'
-        btnConsultar.style.display = 'inline-block'
         limpiarFormularioCategoria()
+        alert("Categoría actualizada correctamente")
         return true
     }else{
         return false
@@ -75,13 +74,10 @@ function editarCategoria(){
     var entradaNombreCategoria = document.getElementById('nombreCategoria')
     entradaIdCategoria.value = categoriaEncontrada.id
     entradaNombreCategoria.value = categoriaEncontrada.nombre
-    entradaIdCategoria.disabled = true
     var btnGuardar = document.getElementById('btnGuardarCategoria')
     var btnModificar = document.getElementById('btnModificarCategoria')
-    var btnConsultar = document.getElementById('btnConsultarCategoria')
     btnGuardar.style.display = 'none'
     btnModificar.style.display = 'inline-block'
-    btnConsultar.style.display = 'none'
 }
 function eliminarCategoria(){
     var categorias = cargarCategorias()
@@ -96,6 +92,7 @@ function eliminarCategoria(){
         categorias.splice(categoriaIndex, 1)
         guardarCategorias(categorias)
         mostrarCategoriasEnTabla()
+        alert("Categoría eliminada correctamente")
         return true
     }else{
         return false
@@ -104,17 +101,6 @@ function eliminarCategoria(){
 function buscarCategoria(IdCategoria){
     var categorias = cargarCategorias() 
     return categorias.find(c => c.id === IdCategoria) || null 
-}
-
-function consultarCategoria(){
-    var entradaIdCategoria = document.getElementById('idCategoria').value
-    var categoriaEncontrada = buscarCategoria(entradaIdCategoria)
-    if (categoriaEncontrada) {
-        limpiarFormularioCategoria()
-        alert(`Categoría encontrada:\nID: ${categoriaEncontrada.id}\nNombre: ${categoriaEncontrada.nombre}`)
-    } else {
-        alert("Categoría no encontrada.")
-    }
 }
 
 function mostrarCategoriasEnTabla(){
@@ -191,15 +177,14 @@ function cargarCategoriasEnSelect(){
 function botonesInicio(){
     var btnGuardar = document.getElementById('btnGuardarCategoria')
     var btnModificar = document.getElementById('btnModificarCategoria')
-    var btnConsultar = document.getElementById('btnConsultarCategoria')
+    var entradaID = document.getElementById('idCategoria')
     btnGuardar.style.display = 'inline-block'
     btnModificar.style.display = 'none'
-    btnConsultar.style.display = 'inline-block'
+    entradaID.disabled = true
 }
 
 function limpiarFormularioCategoria(){
     document.getElementById('idCategoria').value = ''
     document.getElementById('nombreCategoria').value = ''
-    document.getElementById('idCategoria').disabled = false
     botonesInicio()
 }

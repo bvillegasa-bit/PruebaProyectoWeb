@@ -33,6 +33,7 @@ function crearProducto(){
     guardarProductos(productos) 
     mostrarProductosEnTabla()
     limpiarFormularioProducto()
+    alert("Producto creado correctamente")
     return nuevoProducto 
     }
 }
@@ -51,7 +52,7 @@ function modificarProducto(){
     var productos = cargarProductos()
     var validacion = validarFormularioProducto()
     if (!validacion) {
-        alert("Error al modificar la categoría. Verifica los datos ingresados.")
+        alert("Error al modificar el producto. Verifica los datos ingresados.")
         return false
     }   
     var productoIndex = productos.findIndex(p => p.idProducto === entradaIdProducto)
@@ -67,14 +68,12 @@ function modificarProducto(){
         productos[productoIndex].fechaRegistro= fechaProducto
         guardarProductos(productos)
         mostrarProductosEnTabla()
-        entradaIdProducto.disabled = false
         var btnGuardar = document.getElementById('btnGuardarProducto')
         var btnModificar = document.getElementById('btnModificarProducto')
-        var btnConsultar = document.getElementById('btnConsultarProducto')
         btnGuardar.style.display = 'inline-block'
         btnModificar.style.display = 'none'
-        btnConsultar.style.display = 'inline-block'
         limpiarFormularioProducto()
+        alert("El producto se ha modificado correctamente")
         return true
     }else{
         return false
@@ -104,7 +103,6 @@ function editarProducto(){
     var entradaEtiquetaProducto = document.getElementById('etiquetaProducto')
     var entradaEstadoProducto = document.getElementById('estadoProducto')
     var entradaImagenProducto = document.getElementById('imagenProducto')
-    var entradaFechaProducto = document.getElementById('fechaProducto')
     entradaIdProducto.value = productoEncontrado.idProducto
     entradaNombreProducto.value = productoEncontrado.nombreProducto
     entradaCategoriaProducto.value = productoEncontrado.categoriaProducto   
@@ -115,13 +113,10 @@ function editarProducto(){
     entradaEstadoProducto.value = productoEncontrado.estadoProducto
     entradaImagenProducto.value = productoEncontrado.imagenProducto
     entradaDescripcionProducto.value = productoEncontrado.descripcionProducto
-    entradaIdProducto.disabled = true
     var btnGuardar = document.getElementById('btnGuardarProducto')
     var btnModificar = document.getElementById('btnModificarProducto')
-    var btnConsultar = document.getElementById('btnConsultarProducto')
     btnGuardar.style.display = 'none'
     btnModificar.style.display = 'inline-block'
-    btnConsultar.style.display = 'none'
 }
 function eliminarProducto(){
     var productos = cargarProductos()
@@ -136,6 +131,7 @@ function eliminarProducto(){
         productos.splice(productoIndex, 1)
         guardarProductos(productos)
         mostrarProductosEnTabla()
+        alert("Producto eliminado exitosamente.")
         return true
     }else{
         return false
@@ -146,16 +142,6 @@ function buscarProducto(IdProducto){
     return productos.find(p => p.idProducto === IdProducto) || null 
 }
 
-function consultarProducto(){
-    var entradaIdProducto = document.getElementById('idProducto').value
-    var productoEncontrado = buscarProducto(entradaIdProducto)
-    if (productoEncontrado) {
-        limpiarFormularioProducto()
-        alert(`Producto encontrado:\nID: ${productoEncontrado.idProducto}\nNombre: ${productoEncontrado.nombreProducto}`)
-    } else {
-        alert("Producto no encontrado.")
-    }
-}
 
 function mostrarProductosEnTabla(){
     tblProductos.tBodies[0].innerHTML = ''
@@ -185,7 +171,7 @@ function mostrarProductosEnTabla(){
         })
         btnEliminar.addEventListener('click', (e) => {
             e.stopPropagation()
-            if (confirm("¿Está seguro de que desea eliminar este usuario?")) {
+            if (confirm("¿Está seguro de que desea eliminar este producto?")) {
                 eliminarProducto()
             } else {
                 alert("Eliminación cancelada.")
@@ -241,10 +227,10 @@ function validarFormularioProducto() {
 function botonesInicioProducto(){
     var btnGuardar = document.getElementById('btnGuardarProducto')
     var btnModificar = document.getElementById('btnModificarProducto')
-    var btnConsultar = document.getElementById('btnConsultarProducto')
+    var entradaId = document.getElementById('idProducto')
     btnGuardar.style.display = 'inline-block'
     btnModificar.style.display = 'none'
-    btnConsultar.style.display = 'inline-block'
+    entradaId.disabled = true
 }
 
 function limpiarFormularioProducto(){
@@ -257,7 +243,6 @@ function limpiarFormularioProducto(){
     document.getElementById('etiquetaProducto').value = ''
     document.getElementById('estadoProducto').value = ''
     document.getElementById('imagenProducto').value = ''
-    document.getElementById('idProducto').disabled = false
     botonesInicioProducto()
 }
 function cargarProductosEnSelect(){
@@ -317,7 +302,6 @@ function mostrarProductosEnDiv(productos = null){
     cantidadInput.classList.add('cantidad')
     var btnAgregar = crearTagConTexto('button', 'Agregar')
     btnAgregar.classList.add('btn-agregar')
-    // title already appended (possibly as link)
     infoProducto.appendChild(descripcionProducto)
     infoProducto.appendChild(etiquetaProducto)
     infoProducto.appendChild(precioProducto)
@@ -335,6 +319,8 @@ function mostrarProductosEnDiv(productos = null){
             return
         }
         agregarAlCarrito(producto.idProducto, producto.nombreProducto, cantidad, producto.precioProducto)
+        cantidadInput.value = '0'
+        alert('Producto agregado exitosamente')
     })
     })
 }

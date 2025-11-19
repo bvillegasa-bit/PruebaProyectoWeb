@@ -47,6 +47,7 @@ function modificarCarrito(idProducto, nuevaCantidad) {
     if (itemIndex !== -1) {
         carrito[itemIndex].cantidad = nuevaCantidad
         carrito[itemIndex].subtotal = nuevaCantidad * carrito[itemIndex].precioUnitario
+        alert('Compra actualizada correctamente')
         guardarCarrito(carrito)
         mostrarCarrito()
         calcularTotales()
@@ -56,6 +57,7 @@ function modificarCarrito(idProducto, nuevaCantidad) {
 function eliminarDelCarrito(idProducto) {
     const carrito = cargarCarrito()
     const nuevoCarrito = carrito.filter(item => item.idProducto !== idProducto)
+    alert("Producto eliminado del carrito correctamente")
     guardarCarrito(nuevoCarrito)
     mostrarCarrito()
     calcularTotales()
@@ -99,7 +101,7 @@ function calcularTotales() {
 }
 
 function editarItem(idProducto) {
-    const nuevaCantidad = prompt("Ingrese la nueva cantidad:")
+    const nuevaCantidad = prompt("Ingrese la nueva cantidad")
     if (nuevaCantidad && !isNaN(nuevaCantidad) && nuevaCantidad >= 1) {
         modificarCarrito(idProducto, parseInt(nuevaCantidad))
     }

@@ -38,6 +38,7 @@ function consultarPuntos() {
     const usuario = usuarios.find(u => u.nombreCompleto.toLowerCase().includes(apellido.toLowerCase()))
     if (usuario) {
         document.getElementById('resultado').value = `Usuario: ${usuario.nombreCompleto} - Puntos: ${usuario.puntos}`
+        document.getElementById('codigoUsuario').value = usuario.IdUsuario
     } else {
         alert("Usuario no encontrado.")
     }
