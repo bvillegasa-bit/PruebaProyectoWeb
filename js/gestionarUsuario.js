@@ -244,12 +244,22 @@ function validarFormularioUsuario() {
         alert("Por favor, complete todos los campos obligatorios.")
         return false
     }
+    var correoValido = validarCorreo()
+    if(!correoValido){
+        alert('Correo inválido')
+        return false
+    }
     return true
 }
 
 function validarLogin(){
     var correo = document.getElementById('usuarioLogin').value
     var contraseña = document.getElementById('contraseñaLogin').value   
+    var validarCorreo = validarCorreo()
+    if(!validarCorreo){
+        alert('Correo inválido')
+        return false
+    }
     if (!correo || !contraseña) {
         alert("Por favor, complete todos los campos de inicio de sesión.")
         return false
@@ -275,4 +285,10 @@ function limpiarFormularioUsuario(){
     document.getElementById('telefono3').value = ''
     document.getElementById('rol').value = ''
     botonesInicio()
+}
+
+function validarCorreo(){
+    var email = document.getElementById('correo').value
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }

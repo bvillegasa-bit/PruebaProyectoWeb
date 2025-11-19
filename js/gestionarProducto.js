@@ -21,7 +21,7 @@ function crearProducto(){
     var etiquetaProducto = document.getElementById('etiquetaProducto').value
     var estadoProducto = document.getElementById('estadoProducto').value
     var imagenProducto = document.getElementById('imagenProducto').value
-    var fechaRegistro = new Date().toISOString("yyyy-mm-dd|hh:mm:ss").split('T')[0]
+    var fechaRegistro = new Date().toISOString().split('T')[0]
     var validacion = validarFormularioProducto()
     if (!validacion) {
         alert("Error al crear el producto. Verifica los datos ingresados.")
@@ -205,6 +205,20 @@ function generarIdProducto(){
 }
 
 
+function validarPrecio(){
+    var precio = parseFloat(document.getElementById('precioProducto').value)
+    var costo = parseFloat(document.getElementById('costoProducto').value)
+    if (isNaN(precio) || isNaN(costo)) {
+        alert('El precio y el costo deben ser números válidos')
+        return false
+    }
+    if(costo > precio){
+        alert('El precio debe ser mayor que el costo')
+        return false
+    }
+    return true
+}
+
 function validarFormularioProducto() {
     var nombre = document.getElementById('nombreProducto').value
     var descripcion = document.getElementById('descripcionProducto').value
@@ -214,11 +228,13 @@ function validarFormularioProducto() {
     var estado = document.getElementById('estadoProducto').value
     var imagen = document.getElementById('imagenProducto').value
     var etiqueta = document.getElementById('etiquetaProducto').value
+    var precioValido = validarPrecio()
 
     if (!nombre || !descripcion || !categoria || !costo || !precio || !estado ||  !imagen || !etiqueta) {
         alert("Los campos obligatorios no pueden estar vacíos.")
         return false
-    }
+    } else if(!precioValido)
+        return false
     return true
 }
 
@@ -333,3 +349,19 @@ function filtrarProductosCarrito() {
     });
     mostrarProductosEnDiv(productosFiltrados);
 }
+
+function validarPrecio(){
+    var precio = parseFloat(document.getElementById('precioProducto').value)
+    var costo = parseFloat(document.getElementById('costoProducto').value)
+    if (isNaN(precio) || isNaN(costo)) {
+        alert('El precio y el costo deben ser números válidos')
+        return false
+    }
+    if(costo > precio){
+        alert('El precio debe ser mayor que el costo')
+        return false
+    }
+    return true
+}
+
+

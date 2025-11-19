@@ -47,8 +47,8 @@
             </div>
 
             <div class="campo">
-                <label for="precioProducto">Precio:</label>
-                <input type="number" id="precioProducto" step="0.01">
+                <label for="costoProducto" style="margin-top:15px;">Costo:</label>
+                <input type="number" id="costoProducto" step="0.01" placeholder="Es el costo unitario del producto">
             </div>
         </div>
 
@@ -98,15 +98,15 @@
                 </select>
             </div>
             <div class="campo">
-                <label for="costoProducto" style="margin-top:15px;">Costo:</label>
-                <input type="number" id="costoProducto" step="0.01">
+                <label for="precioProducto">Precio:</label>
+                <input type="number" id="precioProducto" step="0.01" placeholder="Debe ser mayor al costo">
             </div>
         </div>
 
     </form>
 
     <div class="acciones-superiores">
-        <button id="btnGuardarProducto" onclick="crearProducto()" class="btn guardar">Guardar</button>>
+        <button id="btnGuardarProducto" onclick="crearProducto()" class="btn guardar">Guardar</button>
         <button id="btnModificarProducto" onclick="modificarProducto()" class="btn consultar">Modificar</button>
     </div>
 

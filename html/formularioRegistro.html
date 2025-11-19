@@ -21,26 +21,26 @@
 
             <div class="grupo">
                 <label for="nombreCompleto">Nombre Completo: </label>
-                <input type="text" id="nombreCompleto" required>
+                <input type="text" id="nombreCompleto">
             </div>
 
             <div class="grupo">
                 <label for="correo">Email: </label>
-                <input type="email" id="correo" required>
+                <input type="email" id="correo">
             </div>
             <div class="grupo">
                 <label for="telefono">Teléfono: </label>
-                <input type="text" id="telefono" required>
+                <input type="text" id="telefono">
             </div>
 
             <div class="grupo">
                 <label for="contraseña">Contraseña: </label>
-                <input type="password" id="contraseña" required>
+                <input type="password" id="contraseña">
             </div>
 
             <div class="grupo">
                 <label for="confirmarContraseña">Confirmar Contraseña: </label>
-                <input type="password" id="confirmarContraseña" required>
+                <input type="password" id="confirmarContraseña">
             </div>
 
             <button type="submit">Registrar</button>
@@ -55,29 +55,34 @@
 
     <script>
         frmRegistro.addEventListener('submit', function(event) {
-            event.preventDefault()  
-            const id = validarUltimoIDygenerar()  
-            const nombreCompleto = document.getElementById('nombreCompleto').value  
-            const correo = document.getElementById('correo').value  
-            const telefono = document.getElementById('telefono').value  
-            const contraseña = document.getElementById('contraseña').value  
-            const confirmarContraseña = document.getElementById('confirmarContraseña').value  
-            const rol = 'usuario final'  
-            const FechaActual = new Date().toISOString().split('T')[0]  
+            event.preventDefault()
+            const id = validarUltimoIDygenerar()
+            const nombreCompleto = document.getElementById('nombreCompleto').value
+            const correo = document.getElementById('correo').value
+            const telefono = document.getElementById('telefono').value
+            const contraseña = document.getElementById('contraseña').value
+            const confirmarContraseña = document.getElementById('confirmarContraseña').value
+            const rol = 'usuario final'
+            const FechaActual = new Date().toISOString().split('T')[0]
+            const camposValidos = validarCampos()
+
             if (contraseña !== confirmarContraseña) {
-                alert('Las contraseñas no coinciden.')  
-                return  
+                alert('Las contraseñas no coinciden.')
+                return
+            } else if (!camposValidos) {
+                return
             }
 
-            const nuevoUsuario = new usuario(id, contraseña, nombreCompleto, correo, telefono, rol, FechaActual)  
-            var exito= registrarUsuario(nuevoUsuario)
+
+            const nuevoUsuario = new usuario(id, contraseña, nombreCompleto, correo, telefono, rol, FechaActual)
+            var exito = registrarUsuario(nuevoUsuario)
             if (exito) {
-                alert('Registro exitoso. Ahora puedes iniciar sesión.')  
-                window.location.href = './login.html'  
+                alert('Registro exitoso. Ahora puedes iniciar sesión.')
+                window.location.href = './login.html'
             } else {
-                alert('El correo ya está registrado.')  
+                alert('El correo ya está registrado.')
             }
-        })  
+        });
 
         function registrarUsuario(usuario) {
             let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []  
@@ -103,6 +108,29 @@
                 let nuevoID = (ultimoID + 1).toString().padStart(4, '0')  
                 return nuevoID  
             }
+        }
+
+        function validarCampos(){
+            const nombreCompleto = document.getElementById('nombreCompleto').value
+            const correo = document.getElementById('correo').value
+            const telefono = document.getElementById('telefono').value
+            const contraseña = document.getElementById('contraseña').value
+            const confirmarContraseña = document.getElementById('confirmarContraseña').value
+            const correoValido = validarCorreo()
+            if(!nombreCompleto || !correo || !telefono || !contraseña || !confirmarContraseña){
+                alert('Complete todos los campos')
+                return false
+            } else if(!correoValido){
+                alert('Correo inválido')
+                return false
+            }
+            return true
+        }
+
+        function validarCorreo(){
+            var email = document.getElementById('correo').value
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
         }
     </script>
 </body>
