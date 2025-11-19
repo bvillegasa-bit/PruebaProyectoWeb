@@ -275,7 +275,7 @@ function mostrarProductosEnDiv(productos = null){
     cardProducto.classList.add('card-producto')
     var imgProducto = crearElemento('div')
     imgProducto.classList.add('img-producto')
-    var imagen = crearImagen(producto.imagenProducto, producto.nombreProducto, 200, 200)
+    var imagen = crearImagen(producto.imagenProducto, producto.nombreProducto, 140, 140)
     imgProducto.appendChild(imagen)
     var infoProducto = crearElemento('div')
     infoProducto.classList.add('info-producto')
